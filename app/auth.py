@@ -10,7 +10,7 @@ from app.db import get_db
 from app.models import User
 from app.config import settings
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+pwd_context = CryptContext(schemes=["pbkdf2_sha256"], deprecated="auto")
 bearer = HTTPBearer()
 
 def hash_password(password: str) -> str:
