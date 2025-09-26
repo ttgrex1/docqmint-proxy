@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: docqmint-proxy
+    env: docker
+    plan: free
+    autoDeploy: true
+    healthCheckPath: /health
+    disk:
+      name: data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: DATABASE_URL
+        value: sqlite:////data/docqmint.db
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_MIN
+        value: 43200
